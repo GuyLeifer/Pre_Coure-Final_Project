@@ -4,6 +4,10 @@ section.appendChild(ul);
 let input = document.querySelector('input[type="text"]');
 const AButton = document.getElementById('addButton');
 
+// counter 
+var counter = 0;
+let counterSpan = document.getElementById('counter');
+
 AButton.addEventListener('click', function(){
     if (input.value!=="") {
         // create li with main div with 3 divs.
@@ -30,5 +34,9 @@ AButton.addEventListener('click', function(){
         text.textContent = input.value;
         // reset the input value after clicking
         input.value = ""; 
+
+        // counter
+        counter++;
+        counterSpan.textContent= counter;
     }
 });
