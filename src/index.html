@@ -11,16 +11,24 @@
     <header>
         <h1>To-Do List</h1>
     </header>
-    
-    <!-- Control Section -->
-    <section>
 
+    <!-- Control Section -->
+    <section class="control">
+        <label for="prioritySelector">Priority: </label> 
+        <select name="prioritySelector" id="prioritySelector">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select> 
+        <label for="textInput">New Task: </label>
+        <input type="text" id="textInput" placeholder="Enter your task here">
+        <button type="submit" id="addButton">Add Task</button>
     </section>
 
     <!-- View Section -->
-    <section>
-
-    </section>
+    <section class="view"></section>
     
 </body>
 <script src="main.js"></script>
