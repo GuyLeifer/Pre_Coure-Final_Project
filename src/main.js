@@ -42,7 +42,30 @@ const SButton = document.getElementById('sortButton');
             counter++;
             counterSpan.textContent= counter;
             
-            
+            // done / not yet
+            let label = document.createElement("label");
+            label.setAttribute("for", "checkbox");
+            label.setAttribute("class", "checkbox2");
+            label.textContent = "Done?";
+            let check = document.createElement("input");
+            check.setAttribute("type", "checkbox");
+            check.setAttribute("class", "checkbox");
+            check.setAttribute("id", "checkbox");
+            check.textContent = "Done/not?";
+            li.appendChild(label);
+            li.appendChild(check);
+
+            // check functions
+            check.addEventListener('click', function(){
+                if (check.checked === true) {
+                    check.parentNode.firstChild.setAttribute("class", "checked");
+                }
+                else {
+                    check.parentNode.firstChild.setAttribute("class", "todoContainer");
+                }
+
+            });
+           
             // delete button
             const btn = document.createElement('button');
             btn.setAttribute('class', 'btn');

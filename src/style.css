@@ -71,3 +71,22 @@ p {
     bottom: 20px;
     left: 18px;
     }
+.checkbox {
+position: absolute;
+right: 15px;
+bottom: 25px;
+}
+.checkbox2 {
+    position: absolute;
+    right: 35px;
+    bottom: 25px;
+    }
+.checked {
+    position: relative;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-style: dotted;
+    margin: 18px;
+    text-decoration: line-through underline overline;
+    /* because just line-through don't enough */
+}
