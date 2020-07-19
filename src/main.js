@@ -15,6 +15,7 @@ const SButton = document.getElementById('sortButton');
         if (input.value!=="") {
             // create li with main div with 3 divs.
             let li = document.createElement('li');
+            li.setAttribute("class", "draggable");
             ul.appendChild(li);
             div = document.createElement('div')
             div.className = "todoContainer";
@@ -33,7 +34,11 @@ const SButton = document.getElementById('sortButton');
             priority.textContent = document.getElementById('prioritySelector').value;
             
             //turn the JS date to SQL date
-            date.textContent = new Date().toLocaleString();
+            let d = new Date();
+            let wDate = d.toISOString().replace("T"," ");
+            let regex = /\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}/;
+            let sqlTime = wDate.match(regex)[0];
+            date.textContent = sqlTime;
             text.textContent = input.value;
             // reset the input value after clicking
             input.value = ""; 
@@ -112,7 +117,8 @@ const SButton = document.getElementById('sortButton');
                   lipe.parentNode.parentNode.removeChild(p);
                 });
             });
-            }});
+        }
+    });
 
     // sort button
     SButton.addEventListener('click', function() {
@@ -134,4 +140,11 @@ const SButton = document.getElementById('sortButton');
             }
         }
     });
+
+
+
+
+
+
+
 
