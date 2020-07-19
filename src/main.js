@@ -46,7 +46,12 @@ const SButton = document.getElementById('sortButton');
             // delete button
             const btn = document.createElement('button');
             btn.setAttribute('class', 'btn');
-            btn.textContent = "Delete";
+            const gar = document.createElement('img');
+            gar.setAttribute("src", "https://cdn2.iconfinder.com/data/icons/database-server-and-location/64/74-512.png");
+            gar.setAttribute("width", "18");
+            gar.setAttribute("height", "25");
+            gar.setAttribute("alt", "delete");
+            btn.appendChild(gar);
             li.appendChild(btn);
 
             //btn delete function
@@ -106,3 +111,4 @@ const SButton = document.getElementById('sortButton');
             }
         }
     });
+
