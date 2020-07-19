@@ -8,6 +8,9 @@ const AButton = document.getElementById('addButton');
 var counter = 0;
 let counterSpan = document.getElementById('counter');
 
+// sort
+const SButton = document.getElementById('sortButton');
+
 AButton.addEventListener('click', function(){
     if (input.value!=="") {
         // create li with main div with 3 divs.
@@ -38,5 +41,26 @@ AButton.addEventListener('click', function(){
         // counter
         counter++;
         counterSpan.textContent= counter;
+    }
+});
+
+// sort button
+SButton.addEventListener('click', function() {
+    var list, i, switching, b, shouldSwitch;
+    switching = true;
+    while (switching) {
+        switching = false;
+        b = ul.getElementsByClassName("todoPriority");
+        for (i = 0; i < (b.length - 1); i++) {
+            shouldSwitch = false;
+            if (b[i].textContent < b[i + 1].textContent) {
+                shouldSwitch = true;
+                break;
+            }
+        }
+        if (shouldSwitch) {
+        b[i].parentNode.parentNode.parentNode.insertBefore(b[i + 1].parentNode.parentNode, b[i].parentNode.parentNode);
+        switching = true;
+        }
     }
 });
