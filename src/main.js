@@ -35,10 +35,10 @@ const SButton = document.getElementById('sortButton');
             
             //turn the JS date to SQL date
             let d = new Date();
-            let wDate = d.toISOString().replace("T"," ");
-            let regex = /\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}/;
-            let sqlTime = wDate.match(regex)[0];
-            date.textContent = sqlTime;
+            let sqlTime = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+            let sqlDate = d.toISOString().slice(0,10);
+            let sql = sqlDate + " " + sqlTime;
+            date.textContent = sql;
             text.textContent = input.value;
             // reset the input value after clicking
             input.value = ""; 
@@ -140,11 +140,5 @@ const SButton = document.getElementById('sortButton');
             }
         }
     });
-
-
-
-
-
-
 
 
