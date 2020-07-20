@@ -7,6 +7,7 @@ const AButton = document.getElementById('addButton');
 // counter 
 var counter = 0;
 let counterSpan = document.getElementById('counter');
+var completeCounter = 0;
 
 // sort
 const SButton = document.getElementById('sortButton');
@@ -35,7 +36,22 @@ const SButton = document.getElementById('sortButton');
             
             //turn the JS date to SQL date
             let d = new Date();
-            let sqlTime = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+            let hour = d.getHours();
+            let minute = d.getMinutes();
+            let second = d.getSeconds();
+            //set the time to normal SQL format of time
+            for (let i=0; i<10; i++){
+                if (hour === i) {
+                    hour = "0"+i;
+                }
+                if (minute === i) {
+                    minute = "0"+i;
+                }
+                if (second === i) {
+                    second = "0"+i;
+                }
+            }
+            let sqlTime = hour + ":" + minute + ":" + second;
             let sqlDate = d.toISOString().slice(0,10);
             let sql = sqlDate + " " + sqlTime;
             date.textContent = sql;
@@ -56,19 +72,25 @@ const SButton = document.getElementById('sortButton');
             check.setAttribute("type", "checkbox");
             check.setAttribute("class", "checkbox");
             check.setAttribute("id", "checkbox");
-            check.textContent = "Done/not?";
             li.appendChild(label);
             li.appendChild(check);
 
+            let complete = document.getElementById("complete");
+            console.log(complete);
+
             // check functions
-            check.addEventListener('click', function(){
+                check.addEventListener('click', function(){
                 if (check.checked === true) {
                     check.parentNode.firstChild.setAttribute("class", "checked");
+                    completeCounter++;
+                    complete.textContent = completeCounter + " completed!"
+                    console.log(completeCounter);
                 }
                 else {
                     check.parentNode.firstChild.setAttribute("class", "todoContainer");
+                    completeCounter--;
+                    complete.textContent = completeCounter + " completed!"
                 }
-
             });
            
             // delete button
@@ -85,6 +107,7 @@ const SButton = document.getElementById('sortButton');
             //btn delete function
             btn.addEventListener('click', function(){
                 const p = document.createElement('p');
+                p.setAttribute('id', 'Rsure');
                 p.textContent = "Are you SURE?"
                 const spann = document.createElement('span');
                 const sure = document.createElement('button');
@@ -108,8 +131,6 @@ const SButton = document.getElementById('sortButton');
                   lip.parentNode.parentNode.parentNode.removeChild(li);
                   //don't forget the counter if deleted item
                   counter--;
-                  counterSpan.textContent= counter;
-
                 });
     
                 notSure.addEventListener('click', function(e){
@@ -140,5 +161,3 @@ const SButton = document.getElementById('sortButton');
             }
         }
     });
-
-

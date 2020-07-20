@@ -16,7 +16,6 @@ h1 {
     text-decoration: underline;
     }
 #startDiv {
-
     text-align: center;
     }
 label {
@@ -46,12 +45,15 @@ ul {
 li {
     position: relative;
     }
-p {
+#Rsure {
     font-size: 60%;
     position: absolute;
     bottom: 1px;
-    left: 100px
+    left: 100px;
     }
+p span {
+    margin-left: 15px;
+}    
 .todoPriority {
     display: inline;
     left: 0;
@@ -87,6 +89,11 @@ bottom: 25px;
     border: 2px solid black;
     border-style: dotted;
     margin: 18px;
-    text-decoration: line-through underline overline;
+    text-decoration: line-through underline;
     /* because just line-through don't enough */
+}
+#complete {
+    font-size: 70%;
+    text-align: center;
+    font-family: "Comic Sans MS", cursive, sans-serif;
 }
