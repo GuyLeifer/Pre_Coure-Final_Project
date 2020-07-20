@@ -97,3 +97,7 @@ bottom: 25px;
     text-align: center;
     font-family: "Comic Sans MS", cursive, sans-serif;
 }
+#search {
+    margin-left: 10px;
+    width: 333px;
+}

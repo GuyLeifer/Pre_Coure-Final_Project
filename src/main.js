@@ -74,22 +74,20 @@ const SButton = document.getElementById('sortButton');
             check.setAttribute("id", "checkbox");
             li.appendChild(label);
             li.appendChild(check);
-
             let complete = document.getElementById("complete");
-            console.log(complete);
 
             // check functions
                 check.addEventListener('click', function(){
                 if (check.checked === true) {
                     check.parentNode.firstChild.setAttribute("class", "checked");
                     completeCounter++;
-                    complete.textContent = completeCounter + " completed!"
+                    complete.textContent = completeCounter + " completed! (at all)";
                     console.log(completeCounter);
                 }
                 else {
                     check.parentNode.firstChild.setAttribute("class", "todoContainer");
                     completeCounter--;
-                    complete.textContent = completeCounter + " completed!"
+                    complete.textContent = completeCounter + " completed! (at all)";
                 }
             });
            
@@ -161,3 +159,20 @@ const SButton = document.getElementById('sortButton');
             }
         }
     });
+
+    //search bar
+const searchBar = document.getElementById('search');
+searchBar.addEventListener('keyup', function(e){
+    const term = e.target.value.toLowerCase();
+    const searchDiv = ul.getElementsByTagName('li');
+    Array.from(searchDiv).forEach(function(div) {
+        const title = div.firstChild.textContent;
+        if (title.toLowerCase().indexOf(term) != -1) {
+            div.style.display = 'block';
+        }
+        else {
+          div.style.display = 'none'; 
+        }
+    })
+});
+
