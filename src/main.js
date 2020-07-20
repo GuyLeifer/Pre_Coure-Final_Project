@@ -128,7 +128,6 @@ AButton.addEventListener('click', function(){
               lip.parentNode.parentNode.parentNode.removeChild(li);
               //don't forget the counter if deleted item
               counter--;
-              counterSpan.textContent= counter;
             });
 
             notSure.addEventListener('click', function(e){
@@ -136,7 +135,7 @@ AButton.addEventListener('click', function(){
               lipe.parentNode.parentNode.removeChild(p);
             });
         });
-    }
+    } 
     //local storage
     lStorage();
 });
@@ -179,6 +178,48 @@ searchBar.addEventListener('keyup', function(e){
         }
     })
 });
+
+//remove all button
+let remove = document.getElementById("removeButton");
+remove.addEventListener('click', function() {
+    const p = document.createElement('p');
+            p.setAttribute('id', 'Reallysure');
+            p.textContent = "Are you SURE?"
+            const spann = document.createElement('span');
+            const sure = document.createElement('button');
+            sure.className = "sureButton";
+            const notSure = document.createElement('button');
+            notSure.className = "notSureButton";
+            sure.style.backgroundColor = "rgba(115, 216, 123, 0.952)";
+            sure.style.Color = "white";
+            sure.textContent = "Yes";
+            notSure.textContent = "No";
+            notSure.style.backgroundColor = "red";
+
+            p.appendChild(spann);
+            spann.appendChild(sure);
+            spann.appendChild(notSure);
+            var control = document.querySelector(".control");
+            console.log(control);
+            control.appendChild(p);
+
+            // sure and not sure buttons
+            sure.addEventListener('click', function(e){
+                while (ul.hasChildNodes()) {
+                    ul.removeChild(ul.lastChild);
+                }
+                const liper = e.target.parentElement;
+                liper.parentNode.parentNode.removeChild(p);
+                //don't forget the counter if deleted item
+                counter = 0;
+              });
+  
+              notSure.addEventListener('click', function(e){
+                const liper = e.target.parentElement;
+                liper.parentNode.parentNode.removeChild(p);
+              });
+          });
+        
 
 let taskCounter;
 // check the last local storage

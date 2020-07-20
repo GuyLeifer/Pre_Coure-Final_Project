@@ -99,5 +99,13 @@ bottom: 25px;
 }
 #search {
     margin-left: 10px;
-    width: 333px;
+    width: 250px;
+    margin-right: 10px;
+}
+#Reallysure {
+    position: relative;
+    bottom: 10px;
+    left: 320px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 60%;
 }
