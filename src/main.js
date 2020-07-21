@@ -78,7 +78,8 @@ AButton.addEventListener('click', function(){
         li.appendChild(label);
         li.appendChild(check);
         let complete = document.getElementById("complete");
-        // check functions
+
+        // checkbox functions
             check.addEventListener('click', function(){
             if (check.checked === true) {
                 check.parentNode.firstChild.setAttribute("class", "checked");
@@ -107,6 +108,8 @@ AButton.addEventListener('click', function(){
             const p = document.createElement('p');
             p.setAttribute('id', 'Rsure');
             p.textContent = "Are you SURE?"
+
+            //create buttons of sure and not sure
             const spann = document.createElement('span');
             const sure = document.createElement('button');
             sure.className = "sureButton";
@@ -123,7 +126,7 @@ AButton.addEventListener('click', function(){
             spann.appendChild(notSure);
             li.appendChild(p);
 
-            // sure and not sure buttons
+            // sure and not sure buttons functions
             sure.addEventListener('click', function(e){
               const lip = e.target.parentElement;
               lip.parentNode.parentNode.parentNode.removeChild(li);
@@ -186,6 +189,8 @@ let remove = document.getElementById("removeButton");
 remove.addEventListener('click', function() {
         const p = document.createElement('p');
         p.setAttribute('id', 'Reallysure');
+        
+        //create buttons of sure and not sure
         p.textContent = "Are you SURE?"
         const spann = document.createElement('span');
         const sure = document.createElement('button');
@@ -203,7 +208,8 @@ remove.addEventListener('click', function() {
         let control = document.querySelector(".control");
         console.log(control);
         control.appendChild(p);
-        // sure and not sure buttons
+
+        // sure and not sure buttons functions
         sure.addEventListener('click', function(e){
             while (ul.hasChildNodes()) {
                 ul.removeChild(ul.lastChild);
@@ -260,7 +266,7 @@ function lStorage() {
 // draggable
 
 const draggables = document.querySelectorAll('.draggable')
-const containers = document.querySelectorAll('.ul')
+const container = document.querySelector('.ul')
 
 draggables.forEach(draggable => {
   draggable.addEventListener('dragstart', () => {
@@ -272,7 +278,6 @@ draggables.forEach(draggable => {
   })
 })
 
-containers.forEach(container => {
   container.addEventListener('dragover', e => {
     e.preventDefault()
     const afterElement = getDragAfterElement(container, e.clientY)
@@ -283,10 +288,9 @@ containers.forEach(container => {
       container.insertBefore(draggable, afterElement)
     }
   })
-})
 
 function getDragAfterElement(container, y) {
-  const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')]
+  const draggableElements = [...obj.querySelectorAll('.draggable:not(.dragging)')]
 
   return draggableElements.reduce((closest, child) => {
     const box = child.getBoundingClientRect()
