@@ -18,6 +18,7 @@ AButton.addEventListener('click', function(){
         // create li with main div with 3 divs.
         let li = document.createElement('li');
         li.setAttribute("class", "draggable");
+        li.setAttribute('draggable', "true");
         ul.appendChild(li);
         div = document.createElement('div')
         div.className = "todoContainer";
@@ -128,6 +129,7 @@ AButton.addEventListener('click', function(){
               lip.parentNode.parentNode.parentNode.removeChild(li);
               //don't forget the counter if deleted item
               counter--;
+              counterSpan.textContent= counter;
             });
 
             notSure.addEventListener('click', function(e){
@@ -182,43 +184,41 @@ searchBar.addEventListener('keyup', function(e){
 //remove all button
 let remove = document.getElementById("removeButton");
 remove.addEventListener('click', function() {
-    const p = document.createElement('p');
-            p.setAttribute('id', 'Reallysure');
-            p.textContent = "Are you SURE?"
-            const spann = document.createElement('span');
-            const sure = document.createElement('button');
-            sure.className = "sureButton";
-            const notSure = document.createElement('button');
-            notSure.className = "notSureButton";
-            sure.style.backgroundColor = "rgba(115, 216, 123, 0.952)";
-            sure.style.Color = "white";
-            sure.textContent = "Yes";
-            notSure.textContent = "No";
-            notSure.style.backgroundColor = "red";
-
-            p.appendChild(spann);
-            spann.appendChild(sure);
-            spann.appendChild(notSure);
-            var control = document.querySelector(".control");
-            console.log(control);
-            control.appendChild(p);
-
-            // sure and not sure buttons
-            sure.addEventListener('click', function(e){
-                while (ul.hasChildNodes()) {
-                    ul.removeChild(ul.lastChild);
-                }
-                const liper = e.target.parentElement;
-                liper.parentNode.parentNode.removeChild(p);
-                //don't forget the counter if deleted item
-                counter = 0;
-              });
-  
-              notSure.addEventListener('click', function(e){
-                const liper = e.target.parentElement;
-                liper.parentNode.parentNode.removeChild(p);
-              });
-          });
+        const p = document.createElement('p');
+        p.setAttribute('id', 'Reallysure');
+        p.textContent = "Are you SURE?"
+        const spann = document.createElement('span');
+        const sure = document.createElement('button');
+        sure.className = "sureButton";
+        const notSure = document.createElement('button');
+        notSure.className = "notSureButton";
+        sure.style.backgroundColor = "rgba(115, 216, 123, 0.952)";
+        sure.style.Color = "white";
+        sure.textContent = "Yes";
+        notSure.textContent = "No";
+        notSure.style.backgroundColor = "red";
+        p.appendChild(spann);
+        spann.appendChild(sure);
+        spann.appendChild(notSure);
+        var control = document.querySelector(".control");
+        console.log(control);
+        control.appendChild(p);
+        // sure and not sure buttons
+        sure.addEventListener('click', function(e){
+            while (ul.hasChildNodes()) {
+                ul.removeChild(ul.lastChild);
+            }
+            const liper = e.target.parentElement;
+            liper.parentNode.parentNode.removeChild(p);
+            //don't forget the counter
+            counter = 0;
+            counterSpan.textContent= counter;
+        });
+        notSure.addEventListener('click', function(e){
+            const liper = e.target.parentElement;
+            liper.parentNode.parentNode.removeChild(p);
+        });  
+    });
         
 
 let taskCounter;
@@ -247,11 +247,53 @@ function lStorage() {
 
 // if someone knows what the problem, it will be AWSOME!
 
-// function lStorage() {
-//     localStorage.clear();
-//         for (let j = 0; j < ul.childElementCount; j++) {
-//             var save = ul.childNodes[j].innerHTML;
-//             console.log(save);
-//             localStorage.setItem((j + 1) , save);
-//         } console.log(localStorage); 
-//     }
+function lStorage() {
+    localStorage.clear();
+        for (let j = 0; j < ul.childElementCount; j++) {
+            var save = ul.childNodes[j].innerHTML;
+            console.log(save);
+            localStorage.setItem((j + 1) , save);
+        } console.log(localStorage); 
+    }
+
+// draggable
+
+const draggables = document.querySelectorAll('.draggable')
+const containers = document.querySelectorAll('.ul')
+
+draggables.forEach(draggable => {
+  draggable.addEventListener('dragstart', () => {
+    draggable.classList.add('dragging')
+  })
+
+  draggable.addEventListener('dragend', () => {
+    draggable.classList.remove('dragging')
+  })
+})
+
+containers.forEach(container => {
+  container.addEventListener('dragover', e => {
+    e.preventDefault()
+    const afterElement = getDragAfterElement(container, e.clientY)
+    const draggable = document.querySelector('.dragging')
+    if (afterElement == null) {
+      container.appendChild(draggable)
+    } else {
+      container.insertBefore(draggable, afterElement)
+    }
+  })
+})
+
+function getDragAfterElement(container, y) {
+  const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')]
+
+  return draggableElements.reduce((closest, child) => {
+    const box = child.getBoundingClientRect()
+    const offset = y - box.top - box.height / 2
+    if (offset < 0 && offset > closest.offset) {
+      return { offset: offset, element: child }
+    } else {
+      return closest
+    }
+  }, { offset: Number.NEGATIVE_INFINITY }).element
+}
