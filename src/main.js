@@ -161,11 +161,11 @@ SButton.addEventListener('click', function() {
         switching = true;
         }
     }
-    //local storage
+    //Local Storage
     lStorage();
 });
 
-    //search bar
+    //Search Bar
 const searchBar = document.getElementById('search');
 searchBar.addEventListener('keyup', function(e){
     const term = e.target.value.toLowerCase();
@@ -181,7 +181,7 @@ searchBar.addEventListener('keyup', function(e){
     })
 });
 
-//remove all button
+//Remove All Button
 let remove = document.getElementById("removeButton");
 remove.addEventListener('click', function() {
         const p = document.createElement('p');
@@ -200,7 +200,7 @@ remove.addEventListener('click', function() {
         p.appendChild(spann);
         spann.appendChild(sure);
         spann.appendChild(notSure);
-        var control = document.querySelector(".control");
+        let control = document.querySelector(".control");
         console.log(control);
         control.appendChild(p);
         // sure and not sure buttons
@@ -219,17 +219,17 @@ remove.addEventListener('click', function() {
             liper.parentNode.parentNode.removeChild(p);
         });  
     });
-        
-
-let taskCounter;
+ 
+    
 // check the last local storage
-window.onload = () => {
+let taskCount;
+window.onload = function(){
     if (localStorage.getItem("Task") !== null) {
         document.getElementsByClassName("todoContainer").innerHTML = localStorage.getItem("Task");
     }
     if (localStorage.getItem("Counter") !== null) {
     counter = Number(localStorage.getItem("Counter"));
-    taskCounter = counter;
+    taskCount = counter;
     } 
     else {
     counter = 0;
@@ -237,15 +237,15 @@ window.onload = () => {
 }
 
 
-//Local Storage
-function lStorage() {
-    localStorage.clear();
-    localStorage.setItem("Task", document.querySelector(".todoContainer").innerHTML);
-    localStorage.setItem("Counter", counter);
-    } 
+// //Local Storage
+// function lStorage() {
+//     localStorage.clear();
+//     localStorage.setItem("Task", document.querySelector(".todoContainer").innerHTML);
+//     localStorage.setItem("Counter", counter);
+//     } 
 
 
-// if someone knows what the problem, it will be AWSOME!
+// if someone knows what the problem, it will be AWESOME!
 
 function lStorage() {
     localStorage.clear();
@@ -253,7 +253,8 @@ function lStorage() {
             var save = ul.childNodes[j].innerHTML;
             console.log(save);
             localStorage.setItem((j + 1) , save);
-        } console.log(localStorage); 
+            counter = j + 1 ;
+        }  
     }
 
 // draggable
