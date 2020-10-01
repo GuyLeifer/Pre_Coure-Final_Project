@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>To-Do List</title>
+    <link href="style.css" rel="stylesheet" type="text/css"> 
+</head>
+<body>
+    <!-- Add Heading -->
+    <header>
+        <h1>To-Do List</h1>
+    </header>
+    <!--counter-->
+    <div id="startDiv">
+        <span id="counter">0</span><span> ToDo's</span>
+        <button id="sortButton">Sort (by Priority)</button>
+    </div>
+    <!-- Control Section -->
+    <section class="control">
+        <label for="prioritySelector">Priority: </label> 
+        <select name="prioritySelector" id="prioritySelector">
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+        </select> 
+        <label for="textInput">New Task: </label>
+        <input type="text" id="textInput" placeholder="Enter your task here">
+        <button type="submit" id="addButton">Add Task</button>
+        <br>
+        <label for="search">Search Tasks: </label>
+        <input type="text" id="search" placeholder="serach..">
+        <button type="submit" id="removeButton">Remove All</button>
+        <p id="complete"></p>
+    </section>
+
+    <!-- View Section -->
+    <section class="view"></section>
+</body>
+<script src="main.js"></script>
+</html>

@@ -115,3 +115,20 @@ $ npm run test
  - Add link to the PR you created in your private repo [here](https://docs.google.com/spreadsheets/d/1P9_YDGqIqmV10fvTmIXc_AGV0_ycI2aBFo2h5zprUMI/edit#gid=1903529310), fill the other details
 
  GOOD LUCK!
+
+ default GIF:
+ ![alt text](./ui-testing-recording.gif)
+
+ mine GIF:
+ ![alt text](./Y8NSaiKb2m.gif)
+
+ About the Bonus:
+ I add some features.
+ A delete button with two functions that show another two buttons of 'sure' and 'not sure' that delete one item in the list.
+ A checkbox that you can mark if you done with a task and it line through the task and the priority of its.
+ A remove all button that with two functions that show another two buttons of 'sure' and 'not sure' that reset the list.
+ A search bar that can find you a task you are looking for.
+ Deployed the app to the Internet - link : https://vercel.com/guyleifer/my-final-project.
+ Tried to do a Drag and Drop function, and local storage the list of the task.
+ Video Link : https://1drv.ms/v/s!AtHZ0GA4kWltjivJBDWUZ6eYsrpy.
+

@@ -1,0 +1,119 @@
+html {
+    background-color: lightgoldenrodyellow;
+    box-sizing: border-box;
+    border: 5px solid black;
+    border-style: dashed;
+    max-width: 550px;
+    margin: auto;
+    padding: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+body {
+    font-size: 150%;
+}
+h1 {
+    text-align: center;
+    text-decoration: underline;
+    }
+#startDiv {
+    text-align: center;
+    }
+label {
+    font-size: 70%;
+    padding-left: 20px;
+    }
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+.todoContainer {
+    position: relative;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-style: dotted;
+    margin: 18px;
+
+    }
+.sureButton  {
+    background-color: rgba(115, 216, 123, 0.952);
+    color: white;
+    }
+.notSure {
+    background-color: red;
+    }
+li {
+    position: relative;
+    }
+#Rsure {
+    font-size: 60%;
+    position: absolute;
+    bottom: 1px;
+    left: 100px;
+    }
+p span {
+    margin-left: 15px;
+}    
+.todoPriority {
+    display: inline;
+    left: 0;
+    }
+.todoCreatedAt {
+    display: inline;
+    position: absolute;
+    right: 0;
+    font-size: 70%;
+    }
+.todoText{
+    text-align: center;  
+    }
+
+.btn {
+    position: relative;
+    bottom: 20px;
+    left: 18px;
+    }
+.checkbox {
+position: absolute;
+right: 15px;
+bottom: 25px;
+}
+.checkbox2 {
+    position: absolute;
+    right: 35px;
+    bottom: 25px;
+    }
+.checked {
+    position: relative;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-style: dotted;
+    margin: 18px;
+    text-decoration: line-through underline;
+    /* because just line-through don't enough */
+}
+#complete {
+    font-size: 70%;
+    text-align: center;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+#search {
+    margin-left: 10px;
+    width: 250px;
+    margin-right: 10px;
+}
+#Reallysure {
+    position: relative;
+    bottom: 10px;
+    left: 320px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 60%;
+}
+
+.draggable {
+    cursor: move;
+  }
+  
+  .draggable.dragging {
+    opacity: .5;
+  }
